@@ -14,4 +14,4 @@ ________________________
 
     `python3 subosint.py`
 
-> This will generate a ***.txt*** file containing the live subdomains and other status.
+> This will generate a ***.txt*** file called **liveDomains.txt** containing the live subdomains and other status.
