@@ -23,8 +23,8 @@ for apiURL in urlList:
             wappalizer = Wappalyzer.latest()
             web = WebPage.new_from_url(apiURL)
             res = wappalizer.analyze(web)
-            with open("liveDomains.txt", "a") as goodCont:
-                goodCont.write(f"{apiURL}\t has ---> {res} \n")
+            goodCont = open("liveDomains.txt", "a")
+            goodCont.write(f"{apiURL}\t has ---> {res} \n")
     except:
         print(f"{apiURL} timed out")
         continue
