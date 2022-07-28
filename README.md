@@ -1,4 +1,5 @@
-# subOsent ![Python](https://img.shields.io/badge/-Python-black?style=flat-square&logo=Python)
+# subOsent 
+![Python](https://img.shields.io/badge/-Python-black?style=flat-square&logo=Python) `3.9.5`
 _______________________
 Sub OSINT aka **subOsint** is a tool that finds live subdomains from a given list. It also finds *domain-specific* **technologies** using [python-wappalizer](https://pypi.org/project/python-Wappalyzer/)
 
