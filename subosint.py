@@ -8,9 +8,13 @@ with open('subdomains.txt', 'r') as readData:
 print(a)
 for i in range(len(a)):
     singleURL = a[i]
-    addProtocol = "http://"+singleURL
-    urlList.append(addProtocol.replace('\n', ''))
-    i += 1
+    if singleURL.startswith('http'):
+        urlList.append(singleURL.replace('\n', ''))
+        i += 1
+    else:
+        addProtocol = "http://"+singleURL
+        urlList.append(addProtocol.replace('\n', ''))
+        i += 1
 #print(urlList)
 
 for apiURL in urlList:
