@@ -1,11 +1,21 @@
 import requests as req
 from Wappalyzer import Wappalyzer, WebPage
+print('''
+                  dP       MMP"""""YMM MP""""""`MM M""M M"""""""`YM M""""""""M 
+                  88       M' .mmm. `M M  mmmmm..M M  M M  mmmm.  M Mmmm  mmmM 
+.d8888b. dP    dP 88d888b. M  MMMMM  M M.      `YM M  M M  MMMMM  M MMMM  MMMM 
+Y8ooooo. 88    88 88'  `88 M  MMMMM  M MMMMMMM.  M M  M M  MMMMM  M MMMM  MMMM 
+      88 88.  .88 88.  .88 M. `MMM' .M M. .MMM'  M M  M M  MMMMM  M MMMM  MMMM 
+`88888P' `88888P' 88Y8888' MMb     dMM Mb.     .dM M  M M  MMMMM  M MMMM  MMMM 
+                           MMMMMMMMMMM MMMMMMMMMMM MMMM MMMMMMMMMMM MMMMMMMMMM 
+                                                                               
+''')
 
 urlList = []
 with open('subdomains.txt', 'r') as readData:
     a = readData.readlines()
 
-print(a)
+# print(a)
 for i in range(len(a)):
     singleURL = a[i]
     if singleURL.startswith('http'):
@@ -17,19 +27,21 @@ for i in range(len(a)):
         i += 1
 #print(urlList)
 
-for apiURL in urlList:
+for url in urlList:
     try:
-        getReq = req.get(apiURL, timeout=20)
+        getReq = req.get(url, timeout=100)
         statUS = getReq.status_code
-        print(f"{apiURL} status ----> {statUS}")
+        print(f"{url} status ----> {statUS}")
         contentLen = len(getReq.content)
         if statUS == 200:
             wappalizer = Wappalyzer.latest()
-            web = WebPage.new_from_url(apiURL)
+            web = WebPage.new_from_url(url)
             res = wappalizer.analyze(web)
             goodCont = open("liveDomains.txt", "a")
-            goodCont.write(f"{apiURL}\t has ---> {res} \n")
+            goodCont.write(f"{url}\t has ---> {res} \n")
+    except (KeyboardInterrupt, SystemExit):
+        raise
+        
     except:
-        print(f"{apiURL} timed out")
+        print(f"{url} timed out")
         continue
-
