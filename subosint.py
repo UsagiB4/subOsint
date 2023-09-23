@@ -43,7 +43,7 @@ for url in urlList:
         statUS = getReq.status_code
         print(f"{url} status ----> {statUS}")
         contentLen = len(getReq.content)
-        if statUS == 200:
+        if statUS != 404:
             wappalizer = Wappalyzer.latest()
             web = WebPage.new_from_url(url)
             res = wappalizer.analyze(web)
