@@ -1,10 +1,13 @@
+#!/usr/bin/env python3
+
+import sys
 import requests as req
 from Wappalyzer import Wappalyzer, WebPage
 print('''
                   dP       MMP"""""YMM MP""""""`MM M""M M"""""""`YM M""""""""M 
                   88       M' .mmm. `M M  mmmmm..M M  M M  mmmm.  M Mmmm  mmmM 
-.d8888b. dP    dP 88d888b. M  MMMMM  M M.      `YM M  M M  MMMMM  M MMMM  MMMM 
-Y8ooooo. 88    88 88'  `88 M  MMMMM  M MMMMMMM.  M M  M M  MMMMM  M MMMM  MMMM 
+\033[1;94m.d8888b. dP    dP 88d888b. M  MMMMM  M M.      `YM M  M M  MMMMM  M MMMM  MMMM \033[0m
+\033[1;33mY8ooooo. 88    88 88'  `88 M  MMMMM  M MMMMMMM.  M M  M M  MMMMM  M MMMM  MMMM \033[0m
       88 88.  .88 88.  .88 M. `MMM' .M M. .MMM'  M M  M M  MMMMM  M MMMM  MMMM 
 `88888P' `88888P' 88Y8888' MMb     dMM Mb.     .dM M  M M  MMMMM  M MMMM  MMMM 
                            MMMMMMMMMMM MMMMMMMMMMM MMMM MMMMMMMMMMM MMMMMMMMMM 
@@ -12,13 +15,20 @@ Y8ooooo. 88    88 88'  `88 M  MMMMM  M MMMMMMM.  M M  M M  MMMMM  M MMMM  MMMM
 ''')
 
 urlList = []
-with open('subdomains.txt', 'r') as readData:
+userArgs = sys.argv
+domainList=''
+if len(userArgs) < 2:
+    print("\033[1;41m you haven't pass any list \033[0m \n \033[1;106m Example:\033[0m\033[1;93m subosint yourSubs.txt\033[0m")
+    sys.exit()
+else:
+    domainList = sys.argv[1]
+with open(domainList, 'r') as readData:
     a = readData.readlines()
 
 # print(a)
 for i in range(len(a)):
     singleURL = a[i]
-    if singleURL.startswith('http'):
+    if singleURL.startswith('http') or singleURL.startswith('https') or singleURL.startswith('mhttp'):
         urlList.append(singleURL.replace('\n', ''))
         i += 1
     else:

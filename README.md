@@ -9,10 +9,8 @@ ________________________
     
     `pip install -r requirement.txt`
 
-2. Then put your subdomain list into the *subdomains.txt* file
+2. After that run
 
-3. After that run
-
-    `python3 subosint.py`
+    `python3 subosint.py yourSubs.txt`
 
 > This will generate a ***.txt*** file called **liveDomains.txt** containing the live subdomains and other status.
